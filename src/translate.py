@@ -1,11 +1,10 @@
 import os
 import openai
-from dotenv import load_dotenv
+
+from config import OPENAI_API_KEY
+openai.api_key = OPENAI_API_KEY
 
 def translate_text(customer_request):
-    load_dotenv(".env")
-
-    openai.api_key = os.environ["OpenAI_API_KEY"]
 
     # Language detection
     language_detection = openai.ChatCompletion.create(
