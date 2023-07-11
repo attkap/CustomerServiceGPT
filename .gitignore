@@ -2,9 +2,11 @@
 
 # Ignore the virtual environment
 venv/
+.venv/
 
 # Ignore all .env directories
 **/.env/
+.env
 
 # Ignore macOS system files
 .DS_Store
@@ -25,3 +27,4 @@ __pycache__/
 
 # Ignore else
 .vscode/
+.flake8
