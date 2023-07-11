@@ -1,0 +1,35 @@
+# .gitignore
+
+# Ignore the virtual environment
+venv/
+
+# Ignore all .env directories
+**/.env/
+
+# Ignore macOS system files
+.DS_Store
+._* 
+.Spotlight-V100 
+.Trashes 
+ehthumbs.db 
+Thumbs.db
+
+# Ignore environment
+.env
+
+# Ignore Python bytecode files and cache directories
+__pycache__/
+*.pyc
+
+# Ignore specific files
+**/repository_code.txt
+**/clean_code.txt
+**/clean_code.py
+**/question_response_pairs.json
+llms/interactions_log_anthropic_for_debugging.txt
+
+# Ignore .DS_Store in all directories
+**/.DS_Store
+
+# Ignore else
+.vscode/
