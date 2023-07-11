@@ -1,0 +1,23 @@
+{
+    "Delivery": {
+      "Missing Package": {},
+      "Damaged Package": {},
+      "Out of Stock": {}
+    },
+    "Product Feedback": {
+      "Taste Feedback": {},
+      "Satiation Feedback": {},
+      "Tolerance Feedback": {}
+    },
+    "Product Support": {
+      "Texture Questions": {},
+      "Storage Questions": {}, 
+      "Product Recommendations": {}
+    },
+    "Subscription": {
+      "Cancellations": {},
+      "Address Changes": {},
+      "Delivery Date Changes": {}
+    },
+    "Other": {}
+  }
