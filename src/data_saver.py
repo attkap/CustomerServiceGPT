@@ -3,7 +3,7 @@ import os
 
 def save_output(output_dict, input_file_path, output_dir='data/LLM_outputs'):
     # Extract the base filename without extension
-    base_filename = os.path.basename("data/customer_requests/customer_request_1.txt")
+    base_filename = os.path.basename("../data/customer_requests/customer_request_1.txt")
     base_filename_without_ext = os.path.splitext(base_filename)[0]
 
     # Construct the output file path
