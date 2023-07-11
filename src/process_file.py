@@ -13,5 +13,5 @@ def process_file(input_file_path):
     save_output(result, input_file_path)
 
 # Example usage
-input_file_path = "/Users/attilakaplan/CustomerBotMVP/data/customer_requests/customer_request_1.txt"
+input_file_path = "data/customer_requests/customer_request_1.txt"
 process_file(input_file_path)
