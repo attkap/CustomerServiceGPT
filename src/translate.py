@@ -3,7 +3,7 @@ import openai
 from dotenv import load_dotenv
 
 def translate_text(customer_request):
-    load_dotenv(".env")
+    load_dotenv("/Users/attilakaplan/CustomerBotMVP/.env")
 
     openai.api_key = os.environ["OpenAI_API_KEY"]
 
