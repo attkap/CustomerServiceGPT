@@ -4,6 +4,9 @@ import openai
 from config import OPENAI_API_KEY
 openai.api_key = OPENAI_API_KEY
 
+input_file_path = "../data/customer_requests/customer_request_1.txt"
+
+
 def translate_text(customer_request):
 
     # Language detection
