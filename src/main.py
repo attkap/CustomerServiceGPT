@@ -1,6 +1,5 @@
 import logging
 import os
-import json
 
 from categorize import get_parent_category_and_child_category
 from load_data import load_text_file
