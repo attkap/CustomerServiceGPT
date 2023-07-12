@@ -27,9 +27,9 @@ detected_language = output2["detected_language"]
 translated_text = output2["translated_text"]
 
 # Log the detected language and translated text
-logging.info(
-    f"Detected Language: {detected_language}, Translated Text: {translated_text}"
-)
+logging.info(f"Detected Language: {detected_language}, "
+             f"Translated Text: {translated_text}")
+
 
 # Now, we'll load the context file based on the given category and subcategory
 category_context_file = f"{category}_{subcategory}.txt"
@@ -76,5 +76,3 @@ def get_response(translated_text, category, subcategory, category_context):
 assistant_response = get_response(
     translated_text, category, subcategory, category_context
 )
-
-logging.info(f"Assistant Response: {assistant_response}")
