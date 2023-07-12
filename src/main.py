@@ -1,10 +1,14 @@
 import os
-import json
+import logging
 from translate_request import translate_request
 from categorize import get_parent_category_and_child_category
 from respond_to_request import get_response
 from save_data import save_output
 from load_data import load_json, load_text_file
+
+# Configure the root logger to log DEBUG and above to the console.
+logging.basicConfig(level=logging.DEBUG, format="%(levelname)s:%(message)s")
+logger = logging.getLogger(__name__)
 
 def process_files():
     # Paths
@@ -22,7 +26,10 @@ def process_files():
             customer_request = load_text_file(requests_dir, filename)
 
             # Translate the customer request
+            logger.info("Sending request to detect language and translate...")
             translation_result = translate_request(customer_request)
+            logger.info(f"Detected language: {translation_result['detected_language']}")
+            logger.info(f"Translated request: {translation_result['translated_request']}")
 
             # Categorize the translated request
             categories_result = get_parent_category_and_child_category(translation_result["translated_request"], categories_list)
@@ -48,3 +55,4 @@ def process_files():
 
 if __name__ == "__main__":
     process_files()
+    
