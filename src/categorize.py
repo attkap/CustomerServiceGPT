@@ -13,22 +13,22 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Categorization
-def get_category(customer_request: str, categories) -> Dict[str, Optional[str]]:
+def get_parent_category(customer_request: str, categories_list: Dict) -> Dict[str, Optional[str]]:
     """
     Categorize the customer request into one of the predefined categories.
 
     This function makes a call to OpenAI API to classify the customer request.
-    If the category is not "Other", it also gets the subcategory.
 
     Parameters:
     customer_request (str): The customer request text.
+    categories_list (Dict): The list of available categories.
 
     Returns:
-    dict: A dictionary containing 'category' and 'subcategory' keys.
+    dict: A dictionary containing 'parent_category' and 'child_category' keys.
     """
     system_message = (
         "Categorize the customer request into one of the following categories:\n"
-        + "\n".join(categories.keys())
+        + "\n".join(categories_list.keys())
     )
     user_message = customer_request
 
@@ -41,50 +41,50 @@ def get_category(customer_request: str, categories) -> Dict[str, Optional[str]]:
 
     return parent_category
 
-def get_subcategory(customer_request: str, categories) -> str:
+def get_child_category(customer_request: str, categories_list: Dict) -> str:
     """
-    Categorize the customer request into one of the predefined subcategories
+    Categorize the customer request into one of the predefined child categories
     under the given category.
 
     This function makes a call to OpenAI API to classify the customer request
-    into a subcategory within the specified category.
+    into a child_category within the specified category.
 
     Parameters:
     customer_request (str): The customer request text.
-    category (str): The category under which to classify the request.
+    parent_category (str): The parent category under which to classify the request.
 
     Returns:
-    str: The subcategory into which the request was classified.
+    str: The child_category into which the request was classified.
     """
     system_message = (
-        "Categorize the customer request into one of the following subcategories:\n"
-        + "\n".join(categories.keys())
+        "Categorize the customer request into one of the following child categories:\n"
+        + "\n".join(categories_list.keys())
     )
     user_message = customer_request
 
     try:
-        subcategorization = call_llm(system_message, user_message)
-        child_category = subcategorization.choices[0].message.content.strip()
+        child_categorization = call_llm(system_message, user_message)
+        child_category = child_categorization.choices[0].message.content.strip()
     except Exception as e:
-        logger.error("Error subcategorizing request: %s", e)
+        logger.error("Error child category request: %s", e)
         raise
 
     return child_category
 
 
-def get_parent_category_and_child_category(customer_request, categories):
+def get_parent_category_and_child_category(customer_request, categories_list):
     try:
-        category = get_category(customer_request, categories)
+        parent_category = get_parent_category(customer_request, categories_list)
     except Exception as e:
-        logger.error("Error getting subcategory: %s", e)
+        logger.error("Error getting parent_category: %s", e)
         raise
-    logger.info("Category: %s", category)
+    logger.info("Parent Category: %s", parent_category)
 
     try:
-        subcategory = get_subcategory(customer_request, categories)
+        child_category = get_child_category(customer_request, categories_list)
     except Exception as e:
-        logger.error("Error getting subcategory: %s", e)
+        logger.error("Error getting child_category: %s", e)
         raise
-    logger.info("Subcategory: %s", subcategory)
+    logger.info("Child Category: %s", child_category)
 
-    return {"parent_category": category, "child_category": subcategory}
+    return {"parent_category": parent_category, "child_category": child_category}

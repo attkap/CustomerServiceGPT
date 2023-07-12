@@ -27,7 +27,7 @@ def process_file(): #input_file_path
     # Load Data
     base_path = "../data"
     try:
-        categories = load_json(
+        categories_list = load_json(
             os.path.join(base_path, "company_setup"), "category_list.json"
         )
         customer_request = load_text_file(
@@ -37,7 +37,7 @@ def process_file(): #input_file_path
         logger.error("Error loading data: %s", e)
         raise
 
-    cat = get_parent_category_and_child_category(customer_request, categories)
+    cat = get_parent_category_and_child_category(customer_request, categories_list)
 
 
 if __name__ == "__main__":
