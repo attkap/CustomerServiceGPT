@@ -1,14 +1,10 @@
-# src/categorize.py
-import logging
-
 from api import call_llm
+from system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
 
-# Set logging level to INFO
-logging.basicConfig(level=logging.INFO)
-# Get a logger instance
-logger = logging.getLogger(__name__)
+class CategorizationError(Exception):
+    """Custom exception for errors during categorization."""
+    pass
 
-# Categorization
 def get_parent_category_and_child_category(customer_request):
     """
     Categorize the customer request into one of the predefined categories.
@@ -17,55 +13,21 @@ def get_parent_category_and_child_category(customer_request):
 
     Parameters:
     customer_request (str): The customer request text.
-    categories_list (Dict): The list of available categories.
 
     Returns:
-    dict: A dictionary containing 'parent_category' and 'child_category' keys.
+    str: A string in the format "parent_category_child_category".
     """
-
-    system_message = ("""
-        You will be provided with a customer service request.\
-        Output a string in the format "parent_category_child_category",
-        For example: "Delivery_Missing_Package"
-
-        Parent categories: Delivery, Product_Feedback, Product_Support, Subscription, Other
-
-        Delivery child categories: 
-        Missing_Package
-        Damaged_Package
-        Out_of_Stock
-
-        Product_Feedback child categories:
-        Taste_Feedback
-        Satiation_Feedback
-        Tolerance_Feedback
-
-        Product_Support child categories:
-        Texture_Questions
-        Storage_Questions
-
-        Product_Recommendations
-        Subscription child categories:
-        Cancellations
-        Address_Changes
-        Delivery_Date_Changes
-
-        Other child categories:
-        All_other
-
-        Output a string in the format "parent_category_child_category",
-        For example: Delivery_Missing_Package
-
-        """
-    )
+    system_message = CATEGORIZATION_SYSTEM_MESSAGE
     user_message = customer_request
+
     try:
         llm_result = call_llm(system_message, user_message)
         categories_result = llm_result.choices[0].message.content
+
         if categories_result is None:
-            logging.warning("No result from call_llm.")
-        else:
-            logging.info(categories_result)        
+            raise CategorizationError("No result from call_llm.")
+
     except Exception as e:
-        logger.error("Error categorizing request: %s", e)    
+        raise CategorizationError("Error categorizing request.") from e
+
     return categories_result
