@@ -4,8 +4,8 @@ import logging
 import os
 from typing import Dict, Optional
 
-import api
 import load_data
+from api import call_llm
 
 # Set logging level to INFO
 logging.basicConfig(level=logging.INFO)
@@ -42,18 +42,14 @@ def get_subcategory(customer_request: str, category: str) -> str:
     Returns:
     str: The subcategory into which the request was classified.
     """
-    messages = [
-        {
-            "role": "system",
-            "content": "Categorize the customer request into one of the "
-            "following subcategories:",
-        },
-        {"role": "assistant", "content": "\n".join(categories[category])},
-        {"role": "user", "content": customer_request},
-    ]
+    system_message = (
+        "Categorize the customer request into one of the following subcategories:\n"
+        + "\n".join(categories[category])
+    )
+    user_message = customer_request
 
     try:
-        subcategorization = api.call_openai_api("gpt-4", messages)
+        subcategorization = call_llm(system_message, user_message)
         return subcategorization.choices[0].message.content.strip()
     except Exception as e:
         logger.error("Error subcategorizing request: %s", e)
@@ -73,17 +69,14 @@ def get_category(customer_request: str) -> Dict[str, Optional[str]]:
     Returns:
     dict: A dictionary containing 'category' and 'subcategory' keys.
     """
-    messages = [
-        {
-            "role": "system",
-            "content": "Categorize this customer request into one of the "
-            "following categories:\n\n" + "\n".join(categories.keys()) + "\n",
-        },
-        {"role": "user", "content": customer_request},
-    ]
+    system_message = (
+        "Categorize the customer request into one of the following categories:\n"
+        + "\n".join(categories.keys())
+    )
+    user_message = customer_request
 
     try:
-        categorization = api.call_openai_api("gpt-4", messages)
+        categorization = call_llm(system_message, user_message)
         category = categorization.choices[0].message.content.strip()
     except Exception as e:
         logger.error("Error categorizing request: %s", e)
