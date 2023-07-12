@@ -1,10 +1,6 @@
 # src/categorize.py
-import json
 import logging
-import os
-from typing import Dict, Optional
 
-import load_data
 from api import call_llm
 
 # Set logging level to INFO
@@ -13,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Categorization
-def get_parent_category(customer_request: str, categories_list: Dict) -> Dict[str, Optional[str]]:
+def get_parent_category_and_child_category(customer_request):
     """
     Categorize the customer request into one of the predefined categories.
 
@@ -26,65 +22,50 @@ def get_parent_category(customer_request: str, categories_list: Dict) -> Dict[st
     Returns:
     dict: A dictionary containing 'parent_category' and 'child_category' keys.
     """
-    system_message = (
-        "Categorize the customer request into one of the following categories:\n"
-        + "\n".join(categories_list.keys())
+
+    system_message = ("""
+        You will be provided with a customer service request.\
+        Output a string in the format "parent_category_child_category",
+        For example: "Delivery_Missing_Package"
+
+        Parent categories: Delivery, Product_Feedback, Product_Support, Subscription, Other
+
+        Delivery child categories: 
+        Missing_Package
+        Damaged_Package
+        Out_of_Stock
+
+        Product_Feedback child categories:
+        Taste_Feedback
+        Satiation_Feedback
+        Tolerance_Feedback
+
+        Product_Support child categories:
+        Texture_Questions
+        Storage_Questions
+
+        Product_Recommendations
+        Subscription child categories:
+        Cancellations
+        Address_Changes
+        Delivery_Date_Changes
+
+        Other child categories:
+        All_other
+
+        Output a string in the format "parent_category_child_category",
+        For example: Delivery_Missing_Package
+
+        """
     )
     user_message = customer_request
-
     try:
-        categorization = call_llm(system_message, user_message)
-        parent_category = categorization.choices[0].message.content.strip()
+        llm_result = call_llm(system_message, user_message)
+        categories_result = llm_result.choices[0].message.content
+        if categories_result is None:
+            logging.warning("No result from call_llm.")
+        else:
+            logging.info(categories_result)        
     except Exception as e:
-        logger.error("Error categorizing request: %s", e)
-        raise
-
-    return parent_category
-
-def get_child_category(customer_request: str, categories_list: Dict) -> str:
-    """
-    Categorize the customer request into one of the predefined child categories
-    under the given category.
-
-    This function makes a call to OpenAI API to classify the customer request
-    into a child_category within the specified category.
-
-    Parameters:
-    customer_request (str): The customer request text.
-    parent_category (str): The parent category under which to classify the request.
-
-    Returns:
-    str: The child_category into which the request was classified.
-    """
-    system_message = (
-        "Categorize the customer request into one of the following child categories:\n"
-        + "\n".join(categories_list.keys())
-    )
-    user_message = customer_request
-
-    try:
-        child_categorization = call_llm(system_message, user_message)
-        child_category = child_categorization.choices[0].message.content.strip()
-    except Exception as e:
-        logger.error("Error child category request: %s", e)
-        raise
-
-    return child_category
-
-
-def get_parent_category_and_child_category(customer_request, categories_list):
-    try:
-        parent_category = get_parent_category(customer_request, categories_list)
-    except Exception as e:
-        logger.error("Error getting parent_category: %s", e)
-        raise
-    logger.info("Parent Category: %s", parent_category)
-
-    try:
-        child_category = get_child_category(customer_request, categories_list)
-    except Exception as e:
-        logger.error("Error getting child_category: %s", e)
-        raise
-    logger.info("Child Category: %s", child_category)
-
-    return {"parent_category": parent_category, "child_category": child_category}
+        logger.error("Error categorizing request: %s", e)    
+    return categories_result
