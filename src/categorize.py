@@ -1,39 +1,5 @@
 from api import call_llm
-
-# Categorization system message
-CATEGORIZATION_SYSTEM_MESSAGE = """
-    You will be provided with a customer service request.\
-    Output a string in the format "parent_category_child_category",
-    For example: "Delivery_Missing_Package"
-
-    Parent categories: Delivery, Product_Feedback, Product_Support, Subscription, Other
-
-    Delivery child categories: 
-    Missing_Package
-    Damaged_Package
-    Out_of_Stock
-
-    Product_Feedback child categories:
-    Taste_Feedback
-    Satiation_Feedback
-    Tolerance_Feedback
-
-    Product_Support child categories:
-    Texture_Questions
-    Storage_Questions
-
-    Product_Recommendations
-    Subscription child categories:
-    Cancellations
-    Address_Changes
-    Delivery_Date_Changes
-
-    Other child categories:
-    All_other
-
-    Output a string in the format "parent_category_child_category",
-    For example: Delivery_Missing_Package
-"""
+from system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
 
 class CategorizationError(Exception):
     """Custom exception for errors during categorization."""
