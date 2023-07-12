@@ -12,5 +12,5 @@ def save_output(output_dict, input_file_path, output_dir='../data/LLM_outputs'):
 
     # Save the output
     with open(output_file_path, 'w') as f:
-        json.dump(output_dict, f)
+        json.dump(output_dict, f, indent=4)  # Add the indent parameter here
 
