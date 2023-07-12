@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 base_path = "../data"
 try:
     categories = load_data.load_json(
-        (base_path, "company_setup"), "category_list.json"
+        os.path.join(base_path, "company_setup"), "category_list.json"
     )
     customer_request = load_data.load_text_file(
         os.path.join(base_path, "customer_requests"), "customer_request_1.txt"
