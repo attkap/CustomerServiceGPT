@@ -1,7 +1,8 @@
 # src/categorize.py
+import json
 import logging
 import os
-import json
+from typing import Dict, Optional
 
 import api
 import load_data
@@ -15,7 +16,7 @@ logger = logging.getLogger(__name__)
 base_path = "../data"
 try:
     categories = load_data.load_json(
-        os.path.join(base_path, "company_setup"), "category_list.json"
+        (base_path, "company_setup"), "category_list.json"
     )
     customer_request = load_data.load_text_file(
         os.path.join(base_path, "customer_requests"), "customer_request_1.txt"
@@ -24,10 +25,11 @@ except (FileNotFoundError, json.JSONDecodeError) as e:
     logger.error("Error loading data: %s", e)
     raise
 
+
 # Categorization
-def get_subcategory(customer_request, category):
+def get_subcategory(customer_request: str, category: str) -> str:
     """
-    Categorize the customer request into one of the predefined subcategories 
+    Categorize the customer request into one of the predefined subcategories
     under the given category.
 
     This function makes a call to OpenAI API to classify the customer request
@@ -58,7 +60,7 @@ def get_subcategory(customer_request, category):
         raise
 
 
-def get_category(customer_request):
+def get_category(customer_request: str) -> Dict[str, Optional[str]]:
     """
     Categorize the customer request into one of the predefined categories.
 
