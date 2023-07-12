@@ -1,8 +1,10 @@
 # api/api.py
 import openai
-from config import OPENAI_API_KEY
+import os
+from dotenv import load_dotenv, find_dotenv
 
-openai.api_key = OPENAI_API_KEY
+load_dotenv(find_dotenv())
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 def call_openai_api(model, messages):
     return openai.ChatCompletion.create(
