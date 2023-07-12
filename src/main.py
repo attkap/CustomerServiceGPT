@@ -1,11 +1,11 @@
 import logging
 import os
 
-from categorize import get_parent_category_and_child_category
-from load_data import load_text_file
-from respond import get_response
-from save_data import save_output
-from translate import translate_request
+from utils.categorize import get_parent_category_and_child_category
+from utils.load_data import load_text_file
+from utils.respond import get_response
+from utils.save_data import save_output
+from utils.translate import translate_request
 
 # Configure the root logger to log DEBUG and above to the console.
 logging.basicConfig(level=logging.DEBUG, format="%(levelname)s:%(message)s")
@@ -92,4 +92,3 @@ def process_files():
 
 if __name__ == "__main__":
     process_files()
-    
