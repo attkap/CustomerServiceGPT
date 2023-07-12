@@ -1,23 +1,23 @@
 {
     "Delivery": {
-      "Missing Package": {},
-      "Damaged Package": {},
-      "Out of Stock": {}
+      "Missing_Package": {},
+      "Damaged_Package": {},
+      "Out_of_Stock": {}
     },
-    "Product Feedback": {
-      "Taste Feedback": {},
-      "Satiation Feedback": {},
-      "Tolerance Feedback": {}
+    "Product_Feedback": {
+      "Taste_Feedback": {},
+      "Satiation_Feedback": {},
+      "Tolerance_Feedback": {}
     },
-    "Product Support": {
-      "Texture Questions": {},
-      "Storage Questions": {}, 
-      "Product Recommendations": {}
+    "Product_Support": {
+      "Texture_Questions": {},
+      "Storage_Questions": {}, 
+      "Product_Recommendations": {}
     },
     "Subscription": {
       "Cancellations": {},
-      "Address Changes": {},
-      "Delivery Date Changes": {}
+      "Address_Changes": {},
+      "Delivery_Date_Changes": {}
     },
     "Other": {}
   }
