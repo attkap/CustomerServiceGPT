@@ -28,6 +28,6 @@ def get_parent_category_and_child_category(customer_request):
             raise CategorizationError("No result from call_llm.")
 
     except Exception as e:
-        raise CategorizationError("Error categorizing request.") from e
+        raise CategorizationError(f"Error categorizing request: {e}") from e
 
     return categories_result

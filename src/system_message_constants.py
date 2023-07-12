@@ -1,3 +1,11 @@
+#This module defines the system messages that are used when making calls to \
+#the OpenAI API.
+#These messages are used as prompts for the AI to generate responses. They \
+#include instructions for the AI on what it should do, such as translating a \
+#message, detecting a language, categorizing a request, or formulating a \
+#response.
+#Each constant in this module is a string that contains the system message.
+
 
 # Language detection system message
 LANGUAGE_DETECTION_SYSTEM_MESSAGE = """
