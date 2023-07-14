@@ -1,6 +1,6 @@
 from typing import Dict
 from src.utils.api import call_llm
-from constants.system_message_constants import CHECK_RESPONSE_SYSTEM_MESSAGE
+from src.constants.system_message_constants import CHECK_RESPONSE_SYSTEM_MESSAGE
 import openai
 
 class CheckError(Exception):

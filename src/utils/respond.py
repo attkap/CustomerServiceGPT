@@ -1,5 +1,5 @@
 from src.utils.api import call_llm
-from constants.system_message_constants import RESPONSE_SYSTEM_MESSAGE
+from src.constants.system_message_constants import RESPONSE_SYSTEM_MESSAGE
 
 class ResponseError(Exception):
     """Custom exception for errors during response generation."""
