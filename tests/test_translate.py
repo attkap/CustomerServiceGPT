@@ -6,12 +6,10 @@ class TestTranslateRequest(unittest.TestCase):
     @patch('src.utils.translate.call_llm')
     def test_translate_request(self, mock_call_llm):
         # Define the mock responses for language detection and translation
-        mock_language_detection_response = {
-            'choices': [{'message': {'content': 'fr'}}]
-        }
-        mock_translation_response = {
-            'choices': [{'message': {'content': 'Hello, world'}}]
-        }
+        mock_language_detection_response = MagicMock()
+        mock_language_detection_response.choices[0].message.content = 'fr'
+        mock_translation_response = MagicMock()
+        mock_translation_response.choices[0].message.content = 'Hello, world'
         
         # Define the behavior of the mock function
         mock_call_llm.side_effect = [mock_language_detection_response, mock_translation_response]
