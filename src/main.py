@@ -2,19 +2,19 @@ import logging
 import os
 from typing import Dict
 
-from utils.categorize import get_parent_category_and_child_category
-from utils.load_data import load_text_file
-from utils.respond import get_response
-from utils.save_data import save_output
-from utils.translate import translate_request
-from utils.check import check_response
+from src.utils.categorize import get_parent_category_and_child_category
+from src.utils.load_data import load_text_file
+from src.utils.respond import get_response
+from src.utils.save_data import save_output
+from src.utils.translate import translate_request
+from src.utils.check import check_response
 
 # Configure the root logger to log DEBUG and above to the console.
 logging.basicConfig(level=logging.DEBUG, format="%(levelname)s:%(message)s")
 logger = logging.getLogger(__name__)
 
 # Paths
-base_path = "../data"
+base_path = "./data"
 requests_dir = os.path.join(base_path, "customer_requests")
 outputs_dir = os.path.join(base_path, "LLM_outputs")
 

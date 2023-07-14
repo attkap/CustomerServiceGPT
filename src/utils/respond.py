@@ -1,4 +1,4 @@
-from utils.api import call_llm
+from src.utils.api import call_llm
 from constants.system_message_constants import RESPONSE_SYSTEM_MESSAGE
 
 class ResponseError(Exception):

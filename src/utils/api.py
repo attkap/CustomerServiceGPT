@@ -1,7 +1,8 @@
 import os
 import logging
-from typing import Any, Dict, List
 import openai
+
+from typing import Any, Dict
 from dotenv import find_dotenv, load_dotenv
 
 # Load OPENAI_API_KEY from .env
