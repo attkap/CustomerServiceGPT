@@ -1,11 +1,12 @@
-#This module defines the system messages that are used when making calls to \
-#the OpenAI API.
-#These messages are used as prompts for the AI to generate responses. They \
-#include instructions for the AI on what it should do, such as translating a \
-#message, detecting a language, categorizing a request, or formulating a \
-#response.
-#Each constant in this module is a string that contains the system message.
-
+"""
+This module defines the system messages that are used when making calls to \
+the OpenAI API.
+These messages are used as prompts for the AI to generate responses. They \
+include instructions for the AI on what it should do, such as translating a \
+message, detecting a language, categorizing a request, or formulating a \
+response.
+Each constant in this module is a string that contains the system message.
+"""
 
 # Language detection system message
 LANGUAGE_DETECTION_SYSTEM_MESSAGE = """
@@ -64,7 +65,11 @@ meals and powders that aim to provide balanced nutrition in a convenient \
 format. Your name is Gregor.
 You will be provided with a customer message which has been classified as part\
 of the following category:
+{}
+Here is some additional context:
+{}
 """
+
 # Response checking system message
 CHECK_RESPONSE_SYSTEM_MESSAGE = """
 You are an assistant that evaluates whether customer service agent responses \

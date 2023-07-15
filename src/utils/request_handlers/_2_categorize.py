@@ -1,6 +1,6 @@
 from typing import Dict
-from utils.api import call_llm
-from constants.system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
+from src.utils.api.api import call_llm
+from src.constants.system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
 
 class CategorizationError(Exception):
     """Custom exception for errors during categorization."""
