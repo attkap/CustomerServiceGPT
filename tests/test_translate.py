@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from src.utils.translate import translate_request
+from src.utils.request_handlers._1_translate import translate_request
 
 class TestTranslateRequest(unittest.TestCase):
     @patch('src.utils.translate.call_llm')

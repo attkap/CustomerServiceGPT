@@ -1,5 +1,5 @@
 from typing import Dict
-from src.utils.api import call_llm
+from src.utils.api.api import call_llm
 from src.constants.system_message_constants import LANGUAGE_DETECTION_SYSTEM_MESSAGE, TRANSLATION_SYSTEM_MESSAGE
 
 def translate_request(customer_request: str) -> Dict[str, str]:

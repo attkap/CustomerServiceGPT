@@ -1,5 +1,5 @@
 from typing import Dict
-from src.utils.api import call_llm
+from src.utils.api.api import call_llm
 from src.constants.system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
 
 class CategorizationError(Exception):
