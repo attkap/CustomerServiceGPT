@@ -23,11 +23,7 @@ def get_response(translated_request: str, categories_result: str, category_conte
     str: The assistant's response.
     """
     # Prepare the messages to send to OpenAI
-    system_message = RESPONSE_SYSTEM_MESSAGE + f"""
-        {categories_result}
-        Here is some additional context:
-        {category_context}
-        """
+    system_message = RESPONSE_SYSTEM_MESSAGE.format(categories_result, category_context)
     user_message = translated_request
 
     try:
