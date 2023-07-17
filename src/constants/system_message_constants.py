@@ -11,7 +11,7 @@ Each constant in this module is a string that contains the system message.
 # Language detection system message
 LANGUAGE_DETECTION_SYSTEM_MESSAGE = """
 What language is being used in the following user message? Output only the ISO\
-639-1 code of the language.
+639-1 code of the language. Example output in case of English: "en".
 """
 
 # Translation to English system message

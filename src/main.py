@@ -1,7 +1,7 @@
 import os
 import logging
 
-from src.utils.data_processing.process_and_log import process_request
+from src.utils.request_handlers._5_process_and_log import process_request
 from src.utils.data_processing.save_data import save_output
 
 # Configure the root logger to log DEBUG and above to the console.
