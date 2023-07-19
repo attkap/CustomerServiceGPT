@@ -1,8 +1,8 @@
 {
     "customer_request": "Guten Tag,\n\nich habe heute eine Lieferung von Ihnen erhalten.\n#128492\nBestelldatum: 03.07.23\n\nLeider fehlt der im Lieferschein enthaltende Messl\u00f6ffel.\nSonst ist alles da, auch der kostenfreie Shaker. Nur fehlt mir jetzt leider der Dosier- bzw. Messl\u00f6ffel.\n\nEs w\u00e4re sch\u00f6n, wenn wir den noch erhalten k\u00f6nnten.\n\nMit freundlichen Gr\u00fc\u00dfen\nJan G\u00e4rtner",
-    "translated_request": "Good Day,\n\nI received a delivery from you today.\n#128492\nOrder date: 07/03/23\n\nUnfortunately, the measuring spoon included in the delivery note is missing.\nEverything else is there, including the free shaker. But unfortunately, I am now missing the dosing or measuring spoon.\n\nIt would be nice if we could still receive it.\n\nBest regards,\nJan G\u00e4rtner",
-    "category": "Order Issue - Missing Item",
-    "response": "Dear Jan G\u00e4rtner,\n\nThank you for reaching out to us and we apologize for the inconvenience caused. We understand how important the measuring spoon is for your needs.\n\nWe will immediately arrange for the missing measuring spoon to be sent out to you. You should expect to receive it within the next few days. We will also send you a tracking number once the item is dispatched.\n\nAgain, we apologize for this oversight and appreciate your understanding. Please feel free to reach out if you have any other concerns or questions.\n\nBest regards,\n[Your Name]\n[Your Position]",
+    "translated_request": "Good day,\n\nI received a delivery from you today.\nOrder number: #128492\nOrder date: 07/03/23\n\nUnfortunately, the measuring spoon included in the delivery note is missing. Everything else is there, including the free shaker. However, I am now unfortunately missing the dosing or measuring spoon.\n\nIt would be great if we could still receive it.\n\nBest regards,\nJan G\u00e4rtner",
+    "category": "Category: Order Issues - Missing Item",
+    "response": "Dear Jan G\u00e4rtner,\n\nThank you for reaching out to us and we apologize for the inconvenience caused. We understand how important it is to have a complete order, especially when it comes to items like a measuring spoon that are essential for usage.\n\nWe will immediately arrange for the missing measuring spoon to be sent out to you. You should expect to receive it within the next few days. We will also send you a tracking number once the item is dispatched.\n\nAgain, we apologize for this oversight and appreciate your understanding. If you have any other concerns or if there's anything else we can assist you with, please feel free to let us know.\n\nBest regards,\n\n[Your Name]\n[Your Position]",
     "is_harmful": {
         "moderation_result": {
             "flagged": false,
@@ -20,19 +20,19 @@
                 "violence": false
             },
             "category_scores": {
-                "sexual": 1.6375565e-05,
-                "hate": 7.582993e-07,
-                "harassment": 6.9127686e-06,
-                "self-harm": 1.4992272e-05,
-                "sexual/minors": 1.1906307e-05,
-                "hate/threatening": 7.380261e-06,
-                "violence/graphic": 1.9131507e-05,
-                "self-harm/intent": 8.004799e-06,
-                "self-harm/instructions": 6.525939e-05,
-                "harassment/threatening": 2.5974192e-05,
-                "violence": 1.4817495e-05
+                "sexual": 1.9454288e-05,
+                "hate": 8.709013e-07,
+                "harassment": 6.0795405e-06,
+                "self-harm": 8.248963e-06,
+                "sexual/minors": 3.4337575e-06,
+                "hate/threatening": 2.4557119e-06,
+                "violence/graphic": 8.9738626e-07,
+                "self-harm/intent": 3.052997e-06,
+                "self-harm/instructions": 6.73468e-06,
+                "harassment/threatening": 3.7962932e-06,
+                "violence": 4.947108e-06
             }
         },
-        "correctness_result": "The response is correct."
+        "correctness_result": "The assistant's response is correct."
     }
 }

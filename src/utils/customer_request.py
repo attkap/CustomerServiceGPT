@@ -2,6 +2,10 @@ import openai
 import logging
 from typing import Dict, Any
 from .openai_api import OpenAI_API
+from src.constants.system_message_constants import TRANSLATION_SYSTEM_MESSAGE
+from src.constants.system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
+from src.constants.system_message_constants import RESPONSE_SYSTEM_MESSAGE
+from src.constants.system_message_constants import CHECK_RESPONSE_SYSTEM_MESSAGE
 
 class CustomerRequest:
     def __init__(self, request_text: str, openai_api: OpenAI_API) -> None:
@@ -25,25 +29,25 @@ class CustomerRequest:
         """
         Translate the request text to English.
         """
-        system_message = "Translate this text to English: {}"
+        system_message = TRANSLATION_SYSTEM_MESSAGE
         user_message = self.request_text
-        llm_result = self.openai_api.call_llm(system_message.format(user_message), user_message)
+        llm_result = self.openai_api.call_llm(system_message, user_message)
         self.translated_text = llm_result.choices[0].message.content
 
     def categorize(self) -> None:
         """
         Categorize the translated request text.
         """
-        system_message = "Categorize this customer request: {}"
+        system_message = CATEGORIZATION_SYSTEM_MESSAGE
         user_message = self.translated_text
-        llm_result = self.openai_api.call_llm(system_message.format(user_message), user_message)
+        llm_result = self.openai_api.call_llm(system_message, user_message)
         self.category = llm_result.choices[0].message.content
 
     def formulate_response(self) -> None:
         """
         Formulate a response to the translated request text.
         """
-        system_message = "Respond to this customer request: {}"
+        system_message = RESPONSE_SYSTEM_MESSAGE
         user_message = self.translated_text
         llm_result = self.openai_api.call_llm(system_message.format(user_message), user_message)
         self.response = llm_result.choices[0].message.content
@@ -57,7 +61,7 @@ class CustomerRequest:
         moderation_result = moderation_response["results"][0]
 
         # Correctness check
-        system_message = "Check the correctness of this response: {}"
+        system_message = CHECK_RESPONSE_SYSTEM_MESSAGE
         user_message = f"""
         Customer Request: {self.translated_text} 
         ###
