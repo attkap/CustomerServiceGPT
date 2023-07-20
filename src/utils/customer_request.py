@@ -1,3 +1,4 @@
+import os
 import openai
 import logging
 from typing import Dict, Any
@@ -6,6 +7,7 @@ from src.constants.system_message_constants import TRANSLATION_SYSTEM_MESSAGE
 from src.constants.system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
 from src.constants.system_message_constants import RESPONSE_SYSTEM_MESSAGE
 from src.constants.system_message_constants import CHECK_RESPONSE_SYSTEM_MESSAGE
+from src.utils.data_processor import DataProcessor
 
 class CustomerRequest:
     def __init__(self, request_text: str, openai_api: OpenAI_API) -> None:
@@ -43,13 +45,28 @@ class CustomerRequest:
         llm_result = self.openai_api.call_llm(system_message, user_message)
         self.category = llm_result.choices[0].message.content
 
+        from src.utils.data_processor import DataProcessor
+
     def formulate_response(self) -> None:
         """
         Formulate a response to the translated request text.
         """
-        system_message = RESPONSE_SYSTEM_MESSAGE
+        # Create a DataProcessor instance
+        data_processor = DataProcessor(input_dir="data/category_contexts", output_dir="output")  # Update directories as needed
+
+        # Load category context
+        category_context_file = f"{self.category}.txt"
+        full_file_path = os.path.join(data_processor.input_dir, category_context_file)
+        category_context = data_processor.load_text_file(full_file_path)
+
+        # Include category context in the system message
+        system_message = RESPONSE_SYSTEM_MESSAGE + f"""
+        {self.category}
+        Here is some additional context:
+        {category_context}
+        """
         user_message = self.translated_text
-        llm_result = self.openai_api.call_llm(system_message.format(user_message), user_message)
+        llm_result = self.openai_api.call_llm(system_message, user_message)
         self.response = llm_result.choices[0].message.content
 
     def check_response(self) -> None:
