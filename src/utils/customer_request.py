@@ -45,14 +45,12 @@ class CustomerRequest:
         llm_result = self.openai_api.call_llm(system_message, user_message)
         self.category = llm_result.choices[0].message.content
 
-        from src.utils.data_processor import DataProcessor
-
     def formulate_response(self) -> None:
         """
         Formulate a response to the translated request text.
         """
         # Create a DataProcessor instance
-        data_processor = DataProcessor(input_dir="data/category_contexts", output_dir="output")  # Update directories as needed
+        data_processor = DataProcessor(input_dir="data/category_contexts", output_dir="output") 
 
         # Load category context
         category_context_file = f"{self.category}.txt"
