@@ -25,8 +25,6 @@ The customer service bot operates by following these steps:
 5. **Check the Response for Harmfulness**: The response is checked for harmful content or language using predefined criteria.
 6. **Output the Response as a JSON**: The final response, along with any relevant metadata, is output as a JSON file and stored in the `/data/LLM_outputs` directory.
 
-### Running the Bot
-
 You can run the customer service bot by executing the `main.py` script within the `src` directory:
 
 ```bash
