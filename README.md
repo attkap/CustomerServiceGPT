@@ -53,7 +53,7 @@ The project is organized as follows:
   - `category_contexts/`: Contexts related to categories.
  
 ## Contributing
-We welcome contributions to the Customer Service Chatbot project! Whether you have ideas for improvements, want to add new features, or simply wish to fix a bug, your input is appreciated. How to contribute
+We welcome contributions to the project! Whether you have ideas for improvements, want to add new features, or simply wish to fix a bug, your input is appreciated. How to contribute:
 
 1. **Fork and Clone**: Fork this repository and clone it to your local machine.
 2. **Make Your Changes**: Work on the changes you'd like to make, following the project's coding standards.
