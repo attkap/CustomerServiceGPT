@@ -1,13 +1,15 @@
-import os
 import logging
+import os
+from typing import Any, Dict, List
+
 import openai
 import tiktoken
-from typing import List, Dict, Any
 from dotenv import find_dotenv, load_dotenv
 
 INPUT_COST_PER_1K = 0.03
 OUTPUT_COST_PER_1K = 0.06
 MODEL_NAME = "gpt-4"
+
 
 class OpenAI_API:
     def __init__(self) -> None:
@@ -24,7 +26,9 @@ class OpenAI_API:
         # Initialize total cost
         self.total_cost = 0.0
 
-    def num_tokens_from_messages(self, messages: List[Dict[str, str]], model: str = MODEL_NAME) -> int:
+    def num_tokens_from_messages(
+        self, messages: List[Dict[str, str]], model: str = MODEL_NAME
+    ) -> int:
         """
         Calculate the number of tokens in a list of messages.
 
@@ -42,14 +46,18 @@ class OpenAI_API:
         tokens_per_name = 1
 
         num_tokens = sum(
-            tokens_per_message + len(encoding.encode(value)) + (tokens_per_name if key == "name" else 0)
+            tokens_per_message
+            + len(encoding.encode(value))
+            + (tokens_per_name if key == "name" else 0)
             for message in messages
             for key, value in message.items()
         )
         num_tokens += 3
         return num_tokens
 
-    def call_llm(self, system_message: str, user_message: str) -> Dict[str, Any]:
+    def call_llm(
+        self, system_message: str, user_message: str
+    ) -> Dict[str, Any]:
         """
         Call the OpenAI ChatCompletion API with system and user messages.
 
@@ -72,10 +80,14 @@ class OpenAI_API:
             self.logger.error(f"Failed to call OpenAI API: {e}")
             raise
 
-        num_output_tokens = response['usage']['completion_tokens']
-        total_cost = (num_input_tokens / 1000 * INPUT_COST_PER_1K) + (num_output_tokens / 1000 * OUTPUT_COST_PER_1K)
+        num_output_tokens = response["usage"]["completion_tokens"]
+        total_cost = (num_input_tokens / 1000 * INPUT_COST_PER_1K) + (
+            num_output_tokens / 1000 * OUTPUT_COST_PER_1K
+        )
         self.total_cost += total_cost
-        self.logger.info(f"input tokens={num_input_tokens}, output tokens={num_output_tokens}, cost={total_cost}")
+        self.logger.info(
+            f"input tokens={num_input_tokens}, output tokens={num_output_tokens}, cost={total_cost}"
+        )
 
         return response
 

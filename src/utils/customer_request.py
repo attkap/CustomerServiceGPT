@@ -1,13 +1,19 @@
-import os
-import openai
 import logging
-from typing import Dict, Any
-from .openai_api import OpenAI_API
-from src.constants.system_message_constants import TRANSLATION_SYSTEM_MESSAGE
-from src.constants.system_message_constants import CATEGORIZATION_SYSTEM_MESSAGE
-from src.constants.system_message_constants import RESPONSE_SYSTEM_MESSAGE
-from src.constants.system_message_constants import CHECK_RESPONSE_SYSTEM_MESSAGE
+import os
+from typing import Any, Dict
+
+import openai
+
+from src.constants.system_message_constants import (
+    CATEGORIZATION_SYSTEM_MESSAGE,
+    CHECK_RESPONSE_SYSTEM_MESSAGE,
+    RESPONSE_SYSTEM_MESSAGE,
+    TRANSLATION_SYSTEM_MESSAGE,
+)
 from src.utils.data_processor import DataProcessor
+
+from .openai_api import OpenAI_API
+
 
 class CustomerRequest:
     def __init__(self, request_text: str, openai_api: OpenAI_API) -> None:
@@ -22,7 +28,7 @@ class CustomerRequest:
         self.category = None
         self.response = None
         self.is_harmful = None
-        self.openai_api = openai_api  
+        self.openai_api = openai_api
 
         # Get a logger instance
         self.logger = logging.getLogger(__name__)
@@ -50,19 +56,26 @@ class CustomerRequest:
         Formulate a response to the translated request text.
         """
         # Create a DataProcessor instance
-        data_processor = DataProcessor(input_dir="data/category_contexts", output_dir="output") 
+        data_processor = DataProcessor(
+            input_dir="data/category_contexts", output_dir="output"
+        )
 
         # Load category context
         category_context_file = f"{self.category}.txt"
-        full_file_path = os.path.join(data_processor.input_dir, category_context_file)
+        full_file_path = os.path.join(
+            data_processor.input_dir, category_context_file
+        )
         category_context = data_processor.load_text_file(full_file_path)
 
         # Include category context in the system message
-        system_message = RESPONSE_SYSTEM_MESSAGE + f"""
+        system_message = (
+            RESPONSE_SYSTEM_MESSAGE
+            + f"""
         {self.category}
         Here is some additional context:
         {category_context}
         """
+        )
         user_message = self.translated_text
         llm_result = self.openai_api.call_llm(system_message, user_message)
         self.response = llm_result.choices[0].message.content
@@ -83,10 +96,15 @@ class CustomerRequest:
         Category Context: {self.category}
         ###
         Assistant Response: {self.response}"""
-        check_response = self.openai_api.call_llm(system_message.format(user_message), user_message)
+        check_response = self.openai_api.call_llm(
+            system_message.format(user_message), user_message
+        )
         correctness_result = check_response.choices[0].message.content
 
-        self.is_harmful = {"moderation_result": moderation_result, "correctness_result": correctness_result}
+        self.is_harmful = {
+            "moderation_result": moderation_result,
+            "correctness_result": correctness_result,
+        }
 
     def process_request(self) -> None:
         """
@@ -94,13 +112,15 @@ class CustomerRequest:
         correctness checks on the response.
         """
         self.translate()
-        self.logger.info(f'Translation: {self.translated_text}')
-        
+        self.logger.info(f"Translation: {self.translated_text}")
+
         self.categorize()
-        self.logger.info(f'Category: {self.category}')
-        
+        self.logger.info(f"Category: {self.category}")
+
         self.formulate_response()
-        self.logger.info(f'Response: {self.response}')
-        
+        self.logger.info(f"Response: {self.response}")
+
         self.check_response()
-        self.logger.info(f'Moderation and correctness check: {self.is_harmful}')
+        self.logger.info(
+            f"Moderation and correctness check: {self.is_harmful}"
+        )

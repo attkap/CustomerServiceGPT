@@ -1,12 +1,13 @@
-import os
 import logging
+import os
+
 from src.utils.request_handler import RequestHandler
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,  # Set the logging level to INFO
-    format='%(asctime)s %(levelname)s:%(name)s: %(message)s',  # Include timestamp, level, module name in logs
-    datefmt='%Y-%m-%d %H:%M:%S',  # Timestamp format
+    format="%(asctime)s %(levelname)s:%(name)s: %(message)s",  # Include timestamp, level, module name in logs
+    datefmt="%Y-%m-%d %H:%M:%S",  # Timestamp format
 )
 
 

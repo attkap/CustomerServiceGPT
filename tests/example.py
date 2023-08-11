@@ -1,11 +1,13 @@
-import unittest
 import logging
 import os
+import unittest
+
 import openai
 from dotenv import load_dotenv
 
 # Initialize logging
-logging.basicConfig(filename='test_logs.log', level=logging.INFO)
+logging.basicConfig(filename="test_logs.log", level=logging.INFO)
+
 
 class TestOpenAI(unittest.TestCase):
     def setUp(self):
@@ -27,32 +29,40 @@ class TestOpenAI(unittest.TestCase):
 
         # Language detection
         language_detection = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", temperature=0.0,
+            model="gpt-3.5-turbo",
+            temperature=0.0,
             messages=[
-                {"role": "system", "content": "What language is being used in the following user message? Output only the ISO 639-1 code of the language. Provide your output in pretty-printed json format with the key: 'ISO_639-1'."},
-                {"role": "user", "content": customer_request}
-            ]
+                {
+                    "role": "system",
+                    "content": "What language is being used in the following user message? Output only the ISO 639-1 code of the language. Provide your output in pretty-printed json format with the key: 'ISO_639-1'.",
+                },
+                {"role": "user", "content": customer_request},
+            ],
         )
 
         detected_language = language_detection.choices[0].message.content
-        logging.info(f'Detected Language: {detected_language}')
+        logging.info(f"Detected Language: {detected_language}")
 
         self.assertIsNotNone(detected_language)
 
         # Translation to English
         translation = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", temperature=0.0,
+            model="gpt-3.5-turbo",
+            temperature=0.0,
             messages=[
-                {"role": "system", "content": "Translate the following user message into precise and clear English that is maximally readable for GPT but still readable for humans. Do not add any information such as subject, etc."},
-                {"role": "user", "content": customer_request}
-            ]
+                {
+                    "role": "system",
+                    "content": "Translate the following user message into precise and clear English that is maximally readable for GPT but still readable for humans. Do not add any information such as subject, etc.",
+                },
+                {"role": "user", "content": customer_request},
+            ],
         )
 
         translated_request = translation.choices[0].message.content
-        logging.info(f'Translated Request: {translated_request}')
+        logging.info(f"Translated Request: {translated_request}")
 
         self.assertIsNotNone(translated_request)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

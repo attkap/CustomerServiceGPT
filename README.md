@@ -30,7 +30,7 @@ The customer service bot operates by following these steps:
 You can run the customer service bot by executing the `main.py` script within the `src` directory:
 
 ```bash
-python src/main.py
+python -m src.main
 ```
 
 All prompts used for interacting with the OpenAI API are stored in `constants/system_messages`.

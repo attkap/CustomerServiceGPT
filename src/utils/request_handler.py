@@ -1,9 +1,11 @@
-import os
 import logging
+import os
 from typing import Dict
+
 from .customer_request import CustomerRequest
-from .openai_api import OpenAI_API
 from .data_processor import DataProcessor
+from .openai_api import OpenAI_API
+
 
 class RequestHandler:
     def __init__(self, input_dir: str, output_dir: str) -> None:
@@ -37,7 +39,9 @@ class RequestHandler:
                 try:
                     self.process_file(full_file_path, filename)
                 except Exception as e:
-                    self.logger.error(f"Failed to process file {filename}. Reason: {e}")
+                    self.logger.error(
+                        f"Failed to process file {filename}. Reason: {e}"
+                    )
 
     def process_file(self, file_path: str, filename: str) -> None:
         """
@@ -65,7 +69,9 @@ class RequestHandler:
 
         # Construct the output file path
         base_filename_without_ext = os.path.splitext(filename)[0]
-        output_file_path = os.path.join(self.output_dir, f"{base_filename_without_ext}_output.json")
+        output_file_path = os.path.join(
+            self.output_dir, f"{base_filename_without_ext}_output.json"
+        )
 
         # Save the output data
         self.data_processor.save_output(output, output_file_path)
