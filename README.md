@@ -31,7 +31,7 @@ You can run the customer service bot by executing the `main.py` script within th
 python -m src.main
 ```
 
-All prompts used for interacting with the OpenAI API are stored in `constants/system_messages`.
+All prompts used for interacting with the OpenAI API are stored in `constants/system_messages`. To set categories, you need to create the respective context files in `data/category_contexts` and adjust the system prompt for the categorization function.
 
 ## Project Structure
 
