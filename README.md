@@ -1,6 +1,6 @@
 # Customer Service Chatbot
 
-This project implements a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.
+This project implements an MVP of a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.
 
 ## Installation
 
@@ -20,8 +20,6 @@ The customer service bot operates by following these steps:
 5. **Check the Response for Harmfulness**: The response is checked for harmful content or language using predefined criteria.
 6. **Output the Response as a JSON**: The final response, along with any relevant metadata, is output as a JSON file and stored in the `/data/LLM_outputs` directory.
 
-All prompts used for interacting with the OpenAI API are stored in `constants/system_messages`.
-
 ### Running the Bot
 
 You can run the customer service bot by executing the `main.py` script within the `src` directory:
@@ -29,6 +27,8 @@ You can run the customer service bot by executing the `main.py` script within th
 ```bash
 python src/main.py
 ```
+
+All prompts used for interacting with the OpenAI API are stored in `constants/system_messages`.
 
 ## Project Structure
 
