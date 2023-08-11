@@ -1,13 +1,12 @@
 # CustomerServiceGPT 🤖
 
+CustomerServiceGPT is intended as a demo of how easy it is to use LLM-APIs to build chatbots that can reliably and flexibly automate large parts of your customer service. 
+
+This project implements an MVP of a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.#
+
 <p align="center">
 <img src="https://github.com/attkap/CustomerServiceGPT/blob/main/stable-diffusion-xl_clipdrop-variants_clipdrop-relight-4.jpeg" alt="CustomerServiceGPT Illustration" width="400"/>
 <p align="center">
-
-
-CustomerServiceGPT is intended as a demo of how easy it is to use LLM-APIs to build chatbots that can reliably and flexibly automate large parts of your customer service. 
-
-This project implements an MVP of a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.
 
 ## Installation
 
