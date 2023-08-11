@@ -1,4 +1,4 @@
-# CustomerServiceGPT 🤖
+# CustomerServiceGPT 
 
 CustomerServiceGPT is intended as a demo of how to use LLM-APIs to build chatbots that can reliably and flexibly automate large parts of your customer service. 
 
