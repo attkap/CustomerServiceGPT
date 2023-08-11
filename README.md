@@ -81,3 +81,7 @@ The project is organized as follows:
   - `LLM_outputs/`: Outputs related to language models.
   - `customer_requests/`: Customer request data.
   - `category_contexts/`: Contexts related to categories.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
