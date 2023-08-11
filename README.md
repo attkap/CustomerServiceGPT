@@ -2,31 +2,10 @@
 
 This project implements a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.
 
-## Setup
-
-1. Clone the repository.
-2. Install the required Python packages using pip: `pip install -r requirements.txt`
-3. Add your OpenAI API key to the `api.py` file, located in `src/utils/api`.
-
-## Usage
-
-To process all customer requests in the `data/customer_requests/` directory and generate responses, run the following command:
-
-```bash
-python -m src.main
-```
-
-# Integrating the updated "Usage" section into the complete README.md content
-
-# Updated README content
-Customer Service Chatbot
-
-This project implements a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.
-
 ## Installation
 
 1. **Clone the Repository**: Clone this repository to your local machine.
-2. **Set Up Environment Variables**: Copy the `.env.example` file (if available) and rename it to `.env`. Fill in the required keys such as `OpenAI_API_KEY`.
+2. **Set Up Environment Variables**: Copy the `.env.example` file (if available) and rename it to `.env`. Add your OpenAI API key to the file.
 3. **Install Dependencies**: Run `pip install -r requirements.txt` to install the required dependencies.
 4. **Configure Virtual Environment**: Optionally, set up a virtual environment using your preferred method.
 
@@ -49,6 +28,7 @@ You can run the customer service bot by executing the `main.py` script within th
 
 ```bash
 python src/main.py
+```
 
 ## Project Structure
 
