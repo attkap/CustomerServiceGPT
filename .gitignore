@@ -2,7 +2,6 @@
 
 # Ignore the virtual environment
 venv/
-.venv/
 
 # Ignore all .env directories
 **/.env/
@@ -19,6 +18,10 @@ Thumbs.db
 # Ignore Python bytecode files and cache directories
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+.mypy_cache/
 
 # Ignore specific files
 
