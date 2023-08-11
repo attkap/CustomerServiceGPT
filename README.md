@@ -1,4 +1,4 @@
-# Customer Service Chatbot
+# CustomerServiceGPT
 
 This project implements an MVP of a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.
 
