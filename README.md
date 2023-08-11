@@ -7,7 +7,6 @@ This project implements an MVP of a customer service chatbot powered by OpenAI's
 1. **Clone the Repository**: Clone this repository to your local machine.
 2. **Set Up Environment Variables**: Copy the `.env.example` file (if available) and rename it to `.env`. Add your OpenAI API key to the file.
 3. **Install Dependencies**: Run `pip install -r requirements.txt` to install the required dependencies.
-4. **Configure Virtual Environment**: Optionally, set up a virtual environment using your preferred method.
 
 ## Usage
 
