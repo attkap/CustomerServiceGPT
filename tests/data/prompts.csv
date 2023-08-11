@@ -1,0 +1,3 @@
+id,text
+1,"What language is being used in the following user message? Output only the ISO639-1 code of the language. Example output in case of English: ""en"""
+2,What language is being used in the following user message? Output only the ISO639-1 code of the language.
