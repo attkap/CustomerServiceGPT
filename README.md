@@ -2,6 +2,8 @@
 
 ![CustomerServiceGPT Illustration](https://github.com/attkap/CustomerServiceGPT/blob/main/stable-diffusion-xl_clipdrop-variants_clipdrop-relight-4.jpeg)
 
+<img src="https://github.com/attkap/CustomerServiceGPT/blob/main/stable-diffusion-xl_clipdrop-variants_clipdrop-relight-4.jpeg" alt="CustomerServiceGPT Illustration" width="200"/>
+
 
 CustomerServiceGPT is intended as a demo of how easy it is to use LLM-APIs to build chatbots that can reliably and flexibly automate large parts of your customer service. 
 
