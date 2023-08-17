@@ -1,8 +1,8 @@
 {
     "customer_request": "Guten Tag,\n\nich habe heute eine Lieferung von Ihnen erhalten.\n#128492\nBestelldatum: 03.07.23\n\nLeider fehlt der im Lieferschein enthaltende Messl\u00f6ffel.\nSonst ist alles da, auch der kostenfreie Shaker. Nur fehlt mir jetzt leider der Dosier- bzw. Messl\u00f6ffel.\n\nEs w\u00e4re sch\u00f6n, wenn wir den noch erhalten k\u00f6nnten.\n\nMit freundlichen Gr\u00fc\u00dfen\nJan G\u00e4rtner",
-    "translated_request": "Good day,\n\nI received a delivery from you today.\nOrder number: #128492\nOrder date: 07/03/23\n\nUnfortunately, the measuring spoon included in the delivery note is missing. Everything else is there, including the free shaker. However, I am now unfortunately missing the dosing or measuring spoon.\n\nIt would be great if we could still receive it.\n\nBest regards,\nJan G\u00e4rtner",
+    "translated_request": "Good Day,\n\nI received a delivery from you today.\nOrder number: #128492\nOrder date: 07/03/23\n\nUnfortunately, the measuring spoon included in the delivery note is missing. Everything else is there, including the free shaker. However, I am now unfortunately missing the dosing or measuring spoon.\n\nIt would be great if we could still receive it.\n\nBest Regards,\nJan G\u00e4rtner",
     "category": "Delivery_Missing_Package",
-    "response": "Dear Jan G\u00e4rtner,\n\nThank you for reaching out to us and I apologize for the inconvenience caused.\n\nI understand that the measuring spoon was missing from your order #128492. I'm sorry for this oversight. We strive to ensure that all items are included in our deliveries and it seems we fell short in this instance.\n\nI will immediately arrange for a new measuring spoon to be sent out to you. You should receive it within the next few days. \n\nAgain, I apologize for any inconvenience this may have caused and appreciate your understanding. If you have any other questions or concerns, please don't hesitate to contact us.\n\nBest regards,\n\nGregor\nSaturo Customer Service Representative",
+    "response": "Dear Jan G\u00e4rtner,\n\nThank you for reaching out to us and I apologize for the inconvenience caused.\n\nI understand that the measuring spoon was missing from your order #128492. This is certainly not the experience we want our customers to have. I will immediately arrange for a replacement to be sent out to you.\n\nYou should receive the missing item within the next few days. If you have any other issues or concerns, please don't hesitate to contact us.\n\nThank you for your understanding and patience.\n\nBest Regards,\nGregor\nSaturo Customer Service Representative",
     "is_harmful": {
         "moderation_result": {
             "flagged": false,
@@ -20,17 +20,17 @@
                 "violence": false
             },
             "category_scores": {
-                "sexual": 0.00011903346,
-                "hate": 2.4549672e-06,
-                "harassment": 8.276787e-06,
-                "self-harm": 1.0147328e-06,
-                "sexual/minors": 1.5096102e-05,
-                "hate/threatening": 2.9460268e-06,
-                "violence/graphic": 1.1451152e-06,
-                "self-harm/intent": 7.081845e-08,
-                "self-harm/instructions": 5.429575e-07,
-                "harassment/threatening": 9.662293e-06,
-                "violence": 0.00010012595
+                "sexual": 9.8189346e-05,
+                "hate": 6.227013e-06,
+                "harassment": 5.944654e-06,
+                "self-harm": 4.7500257e-06,
+                "sexual/minors": 2.750244e-05,
+                "hate/threatening": 2.914355e-06,
+                "violence/graphic": 5.9338745e-06,
+                "self-harm/intent": 7.342907e-07,
+                "self-harm/instructions": 2.138231e-06,
+                "harassment/threatening": 1.476846e-05,
+                "violence": 0.00014819838
             }
         },
         "correctness_result": "Y"
