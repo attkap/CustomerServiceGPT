@@ -1,6 +1,6 @@
-# CustomerServiceGPT 🤖
+# CustomerServiceGPT 
 
-CustomerServiceGPT is intended as a demo of how easy it is to use LLM-APIs to build chatbots that can reliably and flexibly automate large parts of your customer service. 
+CustomerServiceGPT is intended as a demo of how to use LLM-APIs to build chatbots that can reliably and flexibly automate large parts of your customer service. 
 
 This project implements an MVP of a customer service chatbot powered by OpenAI's language model. The chatbot processes customer requests, categorizes them into predefined categories, translates them into English, generates appropriate responses, and checks the response for harm and correctness.
 
@@ -25,15 +25,13 @@ The customer service bot operates by following these steps:
 5. **Check the Response for Harmfulness**: The response is checked for harmful content or language using predefined criteria.
 6. **Output the Response as a JSON**: The final response, along with any relevant metadata, is output as a JSON file and stored in the `/data/LLM_outputs` directory.
 
-### Running the Bot
-
 You can run the customer service bot by executing the `main.py` script within the `src` directory:
 
 ```bash
 python -m src.main
 ```
 
-All prompts used for interacting with the OpenAI API are stored in `constants/system_messages`.
+All prompts used for interacting with the OpenAI API are stored in `constants/system_messages`. To set categories, you need to create the respective context files in `data/category_contexts` and adjust the system prompt for the categorization function.
 
 ## Project Structure
 
